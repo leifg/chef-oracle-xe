@@ -1,5 +1,4 @@
 oracle_filename = node[:oracle_xe][:oracle_install_filename]
-oracle_deb_package = oracle_filename.gsub /oracle-xe-([^-]+).*/, 'oracle-xe_\1-2_amd64.deb'
 symlinks = {
   '/sbin/insserv' => '/usr/lib/insserv/insserv',
   '/bin/awk' => '/usr/bin/awk'
