@@ -19,7 +19,7 @@ end
 template '/tmp/configure_oracle.sh' do 
   source 'configure_oracle.sh.erb'
   mode 0755
-  variables :http_port => node[:oracle_xe][:http_port], :listener_port => node[:oracle_xe][:listener_port], :password => node[:oracle_xe][:password]
+  variables :http_port => node[:oracle_xe][:http_port], :listener_port => node[:oracle_xe][:listener_port], :sysdba_password => node[:oracle_xe][:sysdba_password]
 end
 
 group 'dba'
@@ -85,14 +85,7 @@ bash 'setup oracle user' do
   creates '/home/oracle/.user_created'
 end
 
-bash 'post installation fixes' do
-  user 'oracle'
-  code %{
-    mkdir -p /u01/app/oracle/product/11.2.0/xe/config/logs
-  }
+execute 'configure_oracle' do
+  command '/tmp/configure_oracle.sh'
+  action :run
 end
-
-# execute 'configure_oracle' do
-#   command '/tmp/configure_oracle.sh'
-#   action :run
-# end
