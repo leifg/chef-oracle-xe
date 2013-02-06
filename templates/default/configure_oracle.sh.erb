@@ -8,7 +8,7 @@ send "<%= @listener_port %>\r"
 expect -re "Specify a password to be used for database accounts.*initial configuration:$"
 send "<%= @password %>\r"
 expect -re "Confirm the password"
-send "<%= @password %>\r"
+send "<%= @sysdba_password %>\r"
 expect -re "to be started on boot"
 send "y\r"
 
