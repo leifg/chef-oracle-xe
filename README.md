@@ -8,6 +8,10 @@ As it is not possible to automatically download the binary for the Oracle XE ser
 
 Alternatively you can specifiy another path (or filename) in the attributes.
 
+## Requirements
+
+You will need at least 2GB of RAM so keep that in mind when you set up your machine.
+
 ## Recipes
 
 ### default
