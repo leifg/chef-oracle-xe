@@ -1,15 +1,16 @@
 #!/usr/bin/expect
 
 spawn /etc/init.d/oracle-xe configure
-expect -re "Specify the HTTP port that will be used for Oracle"
-send "<%= @http_port %>\r"
-expect -re "Specify a port that will be used for the database listener"
-send "<%= @listener_port %>\r"
-expect -re "Specify a password to be used for database accounts.*initial configuration:$"
-send "<%= @sysdba_password %>\r"
-expect -re "Confirm the password"
-send "<%= @sysdba_password %>\r"
-expect -re "to be started on boot"
-send "y\r"
-
-interact
+expect -re "Specify the HTTP port that will be used for Oracle" {
+	send "<%= @http_port %>\r"
+	expect -re "Specify a port that will be used for the database listener"
+	send "<%= @listener_port %>\r"
+	expect -re "Specify a password to be used for database accounts.*initial configuration:$"
+	send "<%= @sysdba_password %>\r"
+	expect -re "Confirm the password"
+	send "<%= @sysdba_password %>\r"
+	expect -re "to be started on boot"
+	send "y\r"
+	expect "Installation completed successfully."
+	expect eof
+}

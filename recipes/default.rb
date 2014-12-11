@@ -85,6 +85,7 @@ bash 'setup oracle user' do
 end
 
 execute 'configure_oracle' do
+  user 'root'
   command '/tmp/configure_oracle.sh'
   action :run
 end
